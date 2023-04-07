@@ -41,11 +41,11 @@ def getCodes(price: int):
 
 @client.event
 async def on_ready():
-    await tree.sync(guild=discord.Object(id=YOUR GUILDID HERE))
+    await tree.sync(guild=discord.Object(id=YOUR GUILD HERE))
     print(f'Bot User: {client.user}')
 
-@tree.command(name = "setcookie", description = "sets the cookie of the account with robux", guild=discord.Object(id=YOUR GUILDID HERE))
-@app_commands.checks.has_role(YOUR ADMIN ROLE HERE)
+@tree.command(name = "setcookie", description = "sets the cookie of the account with robux", guild=discord.Object(id=YOUR GUILD HERE))
+@app_commands.checks.has_role(ADMIN ROLE HERE)
 async def setcookie(interaction, cookie: str):
     LocalUser.SetCookie(cookie)
     global requestCookie
@@ -53,8 +53,8 @@ async def setcookie(interaction, cookie: str):
     await interaction.response.send_message("Cookie set.", ephemeral = True)
     await interaction.followup.send(Utils.CheckCookie(LocalUser.RawCookie), ephemeral = True)
 
-@tree.command(name = "countcodes", description = "counts all available codes with a certain value", guild=discord.Object(id=YOUR GUILDID HERE))
-@app_commands.checks.has_role(YOUR ADMIN ROLE HERE)
+@tree.command(name = "countcodes", description = "counts all available codes with a certain value", guild=discord.Object(id=YOUR GUILD HERE))
+@app_commands.checks.has_role(ADMIN ROLE HERE)
 async def countcodes(interaction, value: str):
     if getCodes(value) > 0:
         await interaction.response.send_message("There are currently %s codes worth that amount" % getCodes(value))
@@ -62,7 +62,7 @@ async def countcodes(interaction, value: str):
         await interaction.response.send_message("Invalid price. There are no codes with that price")
 
 
-@tree.command(name = "redeemrbx", description = "Redeems your robux", guild=discord.Object(id=YOUR GUILDID HERE))
+@tree.command(name = "redeemrbx", description = "Redeems your robux", guild=discord.Object(id=YOUR GUILD HERE))
 async def redeemrbx(interaction, code: str, passid: int):
     with open("C:/Users/leifa/Desktop/python shit/Selfbot/Final/codes.json", "r") as p:
         codeList = json.load(p)
@@ -106,4 +106,4 @@ async def redeemrbx(interaction, code: str, passid: int):
         await interaction.response.send_message("Invalid pass price", ephemeral=True)
 
 
-client.run('YOUR TOKEN HERE')
+client.run('YOUR CODE HERE')
