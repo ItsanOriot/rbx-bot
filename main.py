@@ -28,7 +28,7 @@ def getPassCreator(passid: int):
 
 def getCodes(price: int):
     count = 0
-    with open("C:/Users/leifa/Desktop/python shit/Selfbot/Final/codes.json", "r") as p:
+    with open("C:/Users/Admin/Desktop/python shit/Selfbot/Final/codes.json", "r") as p:
         codeList = json.load(p)
     for i in codeList:
         if int(codeList[i]) == int(price):
@@ -64,11 +64,11 @@ async def countcodes(interaction, value: str):
 
 @tree.command(name = "redeemrbx", description = "Redeems your robux", guild=discord.Object(id=806917670473170984))
 async def redeemrbx(interaction, code: str, passid: int):
-    with open("C:/Users/leifa/Desktop/python shit/Selfbot/Final/codes.json", "r") as p:
+    with open("C:/Users/Admin/Desktop/python shit/Selfbot/Final/codes.json", "r") as p:
         codeList = json.load(p)
     if codeList[code] == getPassPrice(passid):
         codeList.pop(code)
-        with open("C:/Users/leifa/Desktop/python shit/Selfbot/Final/codes.json", "w") as p:
+        with open("C:/Users/Admin/Desktop/python shit/Selfbot/Final/codes.json", "w") as p:
             p.write(json.dumps(codeList, indent=2)) 
         await interaction.response.send_message("Valid pass. Buying item", ephemeral=True)
 
